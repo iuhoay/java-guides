@@ -4,7 +4,6 @@ import dev.iuhoay.java.dto.UserDTO;
 import dev.iuhoay.java.dto.mapper.UserDTOMapper;
 import dev.iuhoay.java.entity.User;
 import dev.iuhoay.java.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@RequiredArgsConstructor
 class UserControllerTest {
     @Autowired
     MockMvc mockMvc;
@@ -37,8 +35,8 @@ class UserControllerTest {
     void getUsers() throws Exception {
         // Given
         List<User> userList = List.of(
-                new User("John", "Doe", 30, LocalDateTime.parse("2021-01-01T00:00:00")),
-                new User("Jane", "Doe", 25, LocalDateTime.parse("2021-01-01T00:00:00"))
+                User.builder().firstName("John").lastName("Doe").age(30).createdAt(LocalDateTime.parse("2021-01-01T00:00:00")).build(),
+                User.builder().firstName("Jane").lastName("Doe").age(25).createdAt(LocalDateTime.parse("2021-01-01T00:00:00")).build()
         );
         List<UserDTO> userDTOList = userList.stream().map(userDTOMapper).toList();
 

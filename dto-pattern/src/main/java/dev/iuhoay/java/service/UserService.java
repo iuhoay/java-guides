@@ -17,8 +17,8 @@ public class UserService {
 
     public List<UserDTO> getUsers() {
         List<User> userList = List.of(
-                new User("John", "Doe", 30, LocalDateTime.parse("2021-01-01T00:00:00")),
-                new User("Jane", "Doe", 25, LocalDateTime.parse("2021-01-01T00:00:00"))
+                User.builder().firstName("John").lastName("Doe").age(30).createdAt(LocalDateTime.parse("2021-01-01T00:00:00")).build(),
+                User.builder().firstName("Jane").lastName("Doe").age(25).createdAt(LocalDateTime.parse("2021-01-01T00:00:00")).build()
         );
         return userList.stream().map(userDTOMapper).toList();
     }

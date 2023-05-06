@@ -5,7 +5,6 @@ import dev.iuhoay.java.entity.User;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +14,12 @@ class UserDTOMapperTest {
 
     @Test
     void testConvertUserToUserDTO() {
-        User user = new User("John", "Doe", 30, LocalDateTime.parse("2021-01-01T00:00:00"));
+        User user = User.builder()
+                .firstName("John")
+                .lastName("Doe")
+                .age(30)
+                .createdAt(LocalDateTime.parse("2021-01-01T00:00:00"))
+                .build();
 
         UserDTO userDTO = userDTOMapper.apply(user);
 
@@ -27,9 +31,9 @@ class UserDTOMapperTest {
 
     @Test
     void testConvertListUserToListUserDTO() {
-        List<User> userList = Arrays.asList(
-                new User("John", "Doe", 30, LocalDateTime.parse("2021-01-01T00:00:00")),
-                new User("Jane", "Doe", 25, LocalDateTime.parse("2021-01-01T00:00:00"))
+        List<User> userList = List.of(
+                User.builder().firstName("John").lastName("Doe").age(30).createdAt(LocalDateTime.parse("2021-01-01T00:00:00")).build(),
+                User.builder().firstName("Jane").lastName("Doe").age(25).createdAt(LocalDateTime.parse("2021-01-01T00:00:00")).build()
         );
 
         List<UserDTO> userDTOList = userList.stream().map(userDTOMapper).toList();
