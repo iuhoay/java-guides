@@ -17,6 +17,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-boot-hello</module>
+        <module>dto-pattern</module>
     </modules>
 
     <properties>
