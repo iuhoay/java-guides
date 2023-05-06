@@ -2,11 +2,13 @@ package dev.iuhoay.java.dto.mapper;
 
 import dev.iuhoay.java.dto.UserDTO;
 import dev.iuhoay.java.entity.User;
+import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.function.Function;
 
+@Component
 public class UserDTOMapper implements Function<User, UserDTO> {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
