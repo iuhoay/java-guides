@@ -18,6 +18,7 @@
     <modules>
         <module>spring-boot-hello</module>
         <module>dto-pattern</module>
+        <module>crud</module>
     </modules>
 
     <properties>
